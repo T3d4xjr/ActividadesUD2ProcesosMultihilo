@@ -29,6 +29,7 @@ class PrimosRunnable implements Runnable{
         private  String numero;
         
         public PrimosRunnable(String numero){
+        super();
         this.numero=numero;
         }
         

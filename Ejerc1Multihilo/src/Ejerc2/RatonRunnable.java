@@ -12,7 +12,12 @@ package Ejerc2;
 public class RatonRunnable implements Runnable{
     private String nombre;
    private int cuentaComer; 
-    
+     public  RatonRunnable(String nombre,int cuentaComer)
+    {
+        
+        this.nombre=nombre;
+        this.cuentaComer=cuentaComer;
+    }
     @Override
     public  void run()
     {
@@ -27,10 +32,10 @@ public class RatonRunnable implements Runnable{
     }
     public static void main(String[] args) {
         
-        RatonThread fievel =new RatonThread("Fievel", 4);
-        RatonThread jerry =new RatonThread("Jerry", 5);
-        RatonThread pinky =new RatonThread("Pinky", 3);
-        RatonThread mickey =new RatonThread("Mickey", 6);
+        RatonRunnable fievel =new RatonRunnable("Fievel", 4);
+        RatonRunnable jerry =new RatonRunnable("Jerry", 5);
+        RatonRunnable pinky =new RatonRunnable("Pinky", 3);
+        RatonRunnable mickey =new RatonRunnable("Mickey", 6);
         
         new Thread(fievel).start();
         new Thread(jerry).start();

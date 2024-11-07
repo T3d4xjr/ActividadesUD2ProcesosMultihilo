@@ -13,6 +13,7 @@ public class RatonThread extends Thread{
    private int cuentaComer; 
     public  RatonThread(String nombre,int cuentaComer)
     {
+        super();
         this.nombre=nombre;
         this.cuentaComer=cuentaComer;
     }

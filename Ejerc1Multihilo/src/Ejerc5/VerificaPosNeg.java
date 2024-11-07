@@ -32,6 +32,7 @@ public class VerificaPosNeg {
         private  String numero;
         
         public PosNegRunnable(String numero){
+        super();
         this.numero=numero;
         }
     

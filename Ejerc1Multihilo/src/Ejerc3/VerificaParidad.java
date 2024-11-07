@@ -30,6 +30,7 @@ public class VerificaParidad {
         private  String numero;
         
         public ParidadRunnable(String numero){
+        
         this.numero=numero;
         }
         
