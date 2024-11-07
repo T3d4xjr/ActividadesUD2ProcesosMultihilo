@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -44,18 +44,21 @@ public class RatonStates  extends Thread{
     public static void main(String[] args) throws InterruptedException {
         RatonStates mickey =new RatonStates("Mickey", 6,0);   
         
+        Thread.State estado =mickey.getState();
+        ArrayList<Thread.State> estados =new ArrayList<>();
+        estados.add(estado);
         mickey.start();
         
-        ArrayList<String> estado =new ArrayList<>();
         
-        while (mickey.isAlive()) {
-        estado.add(mickey.getState().toString());
-        Thread.sleep(1000);
+        while (estado !=Thread.State.TERMINATED) {
+            estado=mickey.getState();
+            if(!estados.contains(estado))estados.add(estado);
+            
         }
-        mickey.join();
         
         
-        System.out.println("Estados del hilo: " + estado);
+        
+        System.out.println("Estados del hilo: " + estados);
         System.out.println("Comida consumida:" +RatonStates.getComidaConsumida());
         
         

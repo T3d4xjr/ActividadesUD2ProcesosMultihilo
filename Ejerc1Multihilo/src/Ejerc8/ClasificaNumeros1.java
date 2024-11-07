@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Ejerc8;
 
 import java.util.ArrayList;
@@ -14,126 +10,135 @@ import java.util.Scanner;
  */
 public class ClasificaNumeros1 {
     public static void main(String[] args) throws InterruptedException {
-        Scanner sc =new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         System.out.println("Dime una lista de numeros separados por espacio");
-        String numeros=sc.nextLine();
+        String numeros = sc.nextLine();
         
+        String[] numeroEspaciados = numeros.split(" ");
         
-        String[]  numeroEspaciados=numeros.split(" ");
-        
+        // Convertir la lista de Strings a una lista de enteros
+        List<Integer> numeroListado = new ArrayList<>();
         for (String numeroStr : numeroEspaciados) {
-            // Cada número es manejado por un nuevo hilo
-            ParidadRunnable parImpar = new ParidadRunnable(numeroStr);
-            PrimosRunnable primos =new PrimosRunnable(numeroStr);
-            PosNegRunnable posNeg =new PosNegRunnable(numeroStr);
-            parImpar.start();
-            primos.start();
-            posNeg.start();
- 
-            parImpar.join();
-            primos.join();
-            posNeg.join();
-            
-            
+            numeroListado.add(Integer.parseInt(numeroStr));
         }
+
+        // Crear los hilos
+        ParidadRunnable parImpar = new ParidadRunnable(numeroListado);
+        PrimosRunnable primos = new PrimosRunnable(numeroListado);
+        PosNegRunnable posNeg = new PosNegRunnable(numeroListado);
         
+        // Iniciar los hilos
+        parImpar.start();
+        primos.start();
+        posNeg.start();
         
+        // Esperar que los hilos terminen
+        parImpar.join();
+        primos.join();
+        posNeg.join();
     }
 }
-class ParidadRunnable extends Thread{
-        private  String numero;
-        
-        public ParidadRunnable(String numero){
-        this.numero=numero;
-        }
-        
-        
-        public void parIMpar()
-        {
-            List<String> par =new ArrayList<>();
-            List<String> impar =new ArrayList<>();
-            int num =Integer.parseInt(numero);
-            if (num % 2 == 0) {
-                par.add(numero);
-            }else
-            {
-                impar.add(numero);
-            }
-            
-            System.out.println("Numeros Pares" +par);
-            System.out.println("Numeros impares" +impar);
-        }
-        @Override
-        public void run() {
-           this.parIMpar();
-           
-        }
+
+class ParidadRunnable extends Thread {
+    private List<Integer> numero;
+
+    public ParidadRunnable(List<Integer> numero) {
+        this.numero = numero;
     }
 
-class PrimosRunnable extends Thread{
-        private  String numero;
+    public void parImpar() {
+        List<Integer> par = new ArrayList<>();
+        List<Integer> impar = new ArrayList<>();
         
-        public PrimosRunnable(String numero){
-        this.numero=numero;
+        // Clasificar los números en pares e impares
+        for (int num : numero) {
+            if (num % 2 == 0) {
+                par.add(num);
+            } else {
+                impar.add(num);
+            }
         }
         
-        public  void Primos()
-        {
-        List<String> primos =new ArrayList<>();
-        List<String> noPrimos =new ArrayList<>();
-        int num =Integer.parseInt(numero);
-            if (num <= 1)
-            {
-                noPrimos.add(numero);
-            }else {
-              boolean esPrimo = true;
-                            
-              for (int i = 2; i <= Math.sqrt(num); i++) {
+        // Mostrar los resultados
+        System.out.println("Numeros Pares: " + par);
+        System.out.println("Numeros Impares: " + impar);
+    }
+
+    @Override
+    public void run() {
+        this.parImpar();
+    }
+}
+
+class PrimosRunnable extends Thread {
+    private List<Integer> numero;
+
+    public PrimosRunnable(List<Integer> numero) {
+        this.numero = numero;
+    }
+
+    public void primos() {
+        List<Integer> primos = new ArrayList<>();
+        List<Integer> noPrimos = new ArrayList<>();
+        
+        // Clasificar los números en primos y no primos
+        for (int num : numero) {
+            if (num <= 1) {
+                noPrimos.add(num);
+            } else {
+                boolean esPrimo = true;
+                for (int i = 2; i <= Math.sqrt(num); i++) {
                     if (num % i == 0) {
-                    esPrimo = false;
-                    break;
-                        }
+                        esPrimo = false;
+                        break;
                     }
-                    if (esPrimo) {
-                        primos.add(numero);
-                    } else {
-                        noPrimos.add(numero);
-                    }
+                }
+                if (esPrimo) {
+                    primos.add(num);
+                } else {
+                    noPrimos.add(num);
+                }
             }
-            System.out.println("Numeros primos" +primos);
-            System.out.println("Numeros noPrimos" + noPrimos);
-            
         }
-        @Override
-        public void run() {
-            this.Primos();
-        }
+        
+        // Mostrar los resultados
+        System.out.println("Numeros Primos: " + primos);
+        System.out.println("Numeros No Primos: " + noPrimos);
     }
-class PosNegRunnable extends Thread{
-        private  String numero;
+
+    @Override
+    public void run() {
+        this.primos();
+    }
+}
+
+class PosNegRunnable extends Thread {
+    private List<Integer> numero;
+
+    public PosNegRunnable(List<Integer> numero) {
+        this.numero = numero;
+    }
+
+    public void posNeg() {
+        List<Integer> positivos = new ArrayList<>();
+        List<Integer> negativos = new ArrayList<>();
         
-        public PosNegRunnable(String numero){
-        this.numero=numero;
-        }
-        
-        public void PosNeg()
-        {
-        List<String> positivos =new ArrayList<>();
-        List<String> negativos =new ArrayList<>();
-        int num =Integer.parseInt(numero);
-            if (num  >= 0) {
-                positivos.add(numero);
-            }else
-            {
-                negativos.add(numero);
+        // Clasificar los números en positivos y negativos
+        for (int num : numero) {
+            if (num >= 0) {
+                positivos.add(num);
+            } else {
+                negativos.add(num);
             }
-        System.out.println("Numeros positivos" +positivos);
-        System.out.println("Numeros negativos" +negativos);    
-        }
-        @Override
-        public void run() {
-            this.PosNeg();
         }
         
-        
+        // Mostrar los resultados
+        System.out.println("Numeros Positivos: " + positivos);
+        System.out.println("Numeros Negativos: " + negativos);
     }
+
+    @Override
+    public void run() {
+        this.posNeg();
+    }
+}
