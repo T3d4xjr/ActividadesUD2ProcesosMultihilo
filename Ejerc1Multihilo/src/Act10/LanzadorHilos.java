@@ -33,9 +33,9 @@ public class LanzadorHilos {
         
         System.out.println("Tiempo agotado");
         
-        h1.detener();
-        h2.detener();
-        h3.detener();
+        h1.detener(2);
+        h2.detener(3);
+        h3.detener(5);
         
         
         try {

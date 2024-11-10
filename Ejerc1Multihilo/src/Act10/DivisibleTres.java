@@ -12,10 +12,12 @@ import java.util.logging.Logger;
  * @author DAM1
  */
 class DivisibleTres extends Thread{
-    private boolean detenido = false;
+    private  boolean detenido = false;
+    private int condicion;
 
-    public void detener() {
+    public void detener(int condicion) {
         detenido = true;
+        this.condicion=condicion;
     }
 
     @Override
@@ -30,7 +32,7 @@ class DivisibleTres extends Thread{
                 return;
             }
 
-            if (detenido && i % 3 == 0) {
+            if (detenido && i % condicion == 0) {
                 System.out.println("Hilo 2 cumple la condición de salida con el número " + i);
                 break;
             }

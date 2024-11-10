@@ -9,10 +9,12 @@ package Act10;
  * @author DAM1
  */
 class DivisibleCinco extends Thread{
-    private boolean detenido = false;
+    private  boolean detenido = false;
+    private int condicion=0;
 
-    public void detener() {
+    public void detener(int condicion) {
         detenido = true;
+        this.condicion=condicion;
     }
 
     @Override
@@ -27,7 +29,7 @@ class DivisibleCinco extends Thread{
                 return;
             }
 
-            if (detenido && i % 5== 0) {
+            if (detenido && i % condicion== 0) {
                 System.out.println("Hilo 3 cumple la condición de salida con el número " + i);
                 break;
             }
