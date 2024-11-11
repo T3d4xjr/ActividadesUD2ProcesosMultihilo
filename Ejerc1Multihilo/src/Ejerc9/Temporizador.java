@@ -36,11 +36,6 @@ public class Temporizador {
         hr.start();
         ha.start();
         
-        try {
-            hr.join();
-            
-        } catch (InterruptedException e) {
-        }
     }
     
     

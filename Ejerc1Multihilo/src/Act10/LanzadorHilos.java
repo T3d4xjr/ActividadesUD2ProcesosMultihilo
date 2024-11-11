@@ -12,9 +12,9 @@ import java.util.Random;
  */
 public class LanzadorHilos {
     public static void main(String[] args) {
-        NumerosPares h1 =new NumerosPares();
-        DivisibleTres h2 =new DivisibleTres();
-        DivisibleCinco h3 = new DivisibleCinco();
+        HilosOperaciones h1 =new HilosOperaciones(2, "1");
+        HilosOperaciones h2 =new HilosOperaciones(3,"2");
+        HilosOperaciones h3 =new HilosOperaciones(5,"3");
         
         h1.start();
         h2.start();
@@ -33,9 +33,10 @@ public class LanzadorHilos {
         
         System.out.println("Tiempo agotado");
         
-        h1.detener(2);
-        h2.detener(3);
-        h3.detener(5);
+        h1.detener();
+        h2.detener();
+        h3.detener();
+        
         
         
         try {

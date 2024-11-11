@@ -22,12 +22,14 @@ class HiloAlarma extends Thread{
     
     @Override
     public void run(){
-        for (int i = sAlarma; i <= sReloj ;i+=sAlarma) {
-            System.out.println("Alarma: Han pasado " + sAlarma +" segundos");
-            try {
+        while (true) {           
+            try {   
                 Thread.sleep(sAlarma*1000);
             } catch (InterruptedException e) {
             }
-        }
+            System.out.println("Alarma: Han pasado " + sAlarma+" segundos");
+        }   
+            
+        
     }
 }
