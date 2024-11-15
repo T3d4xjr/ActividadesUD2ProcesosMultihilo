@@ -4,17 +4,14 @@
  */
 package Act12;
 
-import java.util.Random;
-
 public class OperacionBancaria {
     public static void main(String[] args) {
-        Random random = new Random();
-        double saldoInicial = 30 + random.nextInt(31);
-        Cuenta cuenta = new Cuenta(saldoInicial);
+        
+        Cuenta cuenta = new Cuenta(0);
         System.out.println("Saldo inicial de la cuenta: " + cuenta.getSaldo() + "€");
 
-        Persona p1 = new Persona("Persona 1", cuenta, saldoInicial);
-        Persona p2 = new Persona("Persona 2", cuenta, saldoInicial);
+        Persona p1 = new Persona("Persona 1", cuenta);
+        Persona p2 = new Persona("Persona 2", cuenta);
 
         p1.start();
         p2.start();

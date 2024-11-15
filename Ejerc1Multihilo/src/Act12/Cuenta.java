@@ -4,6 +4,8 @@
  */
 package Act12;
 
+import java.util.Random;
+
 /**
  *
  * @author tedax
@@ -12,10 +14,12 @@ public class Cuenta {
     private double saldo;
 
     public Cuenta(double saldo) {
-        this.saldo = saldo;
+        Random r =new Random();
+        this.saldo = r.nextInt(30,61);
     }
+    
 
-    public void retirarDinero(String nombre, double cantidad) {
+    public synchronized void retirarDinero(String nombre, double cantidad) {
         if (saldo >= cantidad) {
             System.out.println(nombre + ": va a retirar " + cantidad + "€. Saldo actual: " + saldo + "€");
             try {
@@ -23,6 +27,7 @@ public class Cuenta {
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
+            
             saldo -= cantidad;
             System.out.println(nombre + ": ha retirado " + cantidad + "€. Saldo actual: " + saldo + "€");
         } else {
@@ -33,5 +38,8 @@ public class Cuenta {
     public double getSaldo() {
         return saldo;
     }
+
+ 
+    
 }
 
