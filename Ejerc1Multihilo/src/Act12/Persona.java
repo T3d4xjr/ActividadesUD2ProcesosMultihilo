@@ -11,12 +11,10 @@ package Act12;
 public class Persona extends Thread {
     private String nombre;
     private Cuenta cuenta;
-    private double saldo;
 
-    public Persona(String nombre, Cuenta cuenta, double saldo) {
+    public Persona(String nombre, Cuenta cuenta) {
         this.nombre = nombre;
         this.cuenta = cuenta;
-        this.saldo = saldo;
     }
 
     @Override

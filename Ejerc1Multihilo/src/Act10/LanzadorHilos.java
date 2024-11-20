@@ -24,8 +24,6 @@ public class LanzadorHilos {
         
         int tiempoAleatorio=5 +rd.nextInt(6);
         
-        
-        
         try {
             Thread.sleep(tiempoAleatorio*1000);
         } catch (InterruptedException e) {

@@ -5,6 +5,7 @@
 package Ejerc11;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -13,29 +14,6 @@ import java.util.Scanner;
  */
 public class SumarNumeros {
     
-
-    static class SumaHilo extends Thread {
-        private int[] numeros;
-        private int suma = 0;
-
-     
-        public SumaHilo(int[] numeros) {
-            this.numeros = numeros;
-        }
-
-  
-        public int getSuma() {
-            return suma;
-        }
-
-        @Override
-        public void run() {
-            for (int num : numeros) {
-                suma += num;
-            }
-        }
-    }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
@@ -55,8 +33,12 @@ public class SumarNumeros {
         int[] primeraMitad = new int[mitad];
         int[] segundaMitad = new int[numeros.length - mitad];
         
-        System.arraycopy(numeros, 0, primeraMitad, 0, mitad);
-        System.arraycopy(numeros, mitad, segundaMitad, 0, numeros.length - mitad);
+        for (int i = 0; i < mitad; i++) {
+            primeraMitad[i]=numeros[i];
+        }
+        for (int i = mitad,j=0; i < numeros.length; i++,j++) {
+            segundaMitad[j]=numeros[i];
+        }
         
     
         SumaHilo hilo1 = new SumaHilo(primeraMitad);
@@ -77,6 +59,8 @@ public class SumarNumeros {
         int sumaTotal = hilo1.getSuma() + hilo2.getSuma();
         
         // Mostrar la suma total
+        System.out.println(Arrays.toString(primeraMitad));
+        System.out.println(Arrays.toString(segundaMitad));
         System.out.println("La suma total de los números introducidos es: " + sumaTotal);
     }
 }
