@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Ejerc14;
-
+    
 public class Desarrollador extends Thread {
     private final ListaTareas listaTareas;
     private final int numTareas;
@@ -23,6 +23,5 @@ public class Desarrollador extends Thread {
                 System.out.println("El desarrollador fue interrumpido.");
             }
         }
-        System.out.println("Ya no quedan tareas por leer.");
     }
 }

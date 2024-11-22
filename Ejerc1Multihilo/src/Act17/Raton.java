@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Ejerc15;
+package Act17;
 
+/**
+ *
+ * @author DAM1
+ */
 public class Raton extends Thread {
     private final String nombre;
     private final int tiempoEnComer;
@@ -19,13 +23,6 @@ public class Raton extends Thread {
 
     @Override
     public void run() {
-        try {
-            System.out.println(nombre + " empieza a comer.");
-            Thread.sleep(tiempoEnComer);
-            comedero.consumirComida(nombre, unidadesComida);
-            System.out.println(nombre + " terminó de comer.");
-        } catch (InterruptedException e) {
-            System.out.println(nombre + " fue interrumpido mientras comía.");
-        }
+        comedero.consumirComida(nombre, unidadesComida, tiempoEnComer);
     }
 }

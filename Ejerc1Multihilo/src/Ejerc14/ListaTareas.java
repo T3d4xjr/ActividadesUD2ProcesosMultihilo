@@ -7,18 +7,18 @@ package Ejerc14;
 import java.util.ArrayList;
 
 public class ListaTareas {
-    private final ArrayList<String> tareas = new ArrayList<>();
+    private final  ArrayList<String> tareas = new ArrayList<>();
 
     public synchronized void añadirTarea(String tarea) {
         tareas.add(tarea);
         System.out.println("P: " + tarea + " añadida");
-        notify(); // Notifica a los hilos que esperan que hay una nueva tarea
+        notify();
     }
 
     public synchronized String obtenerTarea() throws InterruptedException {
         while (tareas.isEmpty()) {
-            wait(); // Espera hasta que haya una tarea disponible
+            wait(); 
         }
-        return tareas.remove(0); // Devuelve y elimina la primera tarea
+        return tareas.remove(0);
     }
 }

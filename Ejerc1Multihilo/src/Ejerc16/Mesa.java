@@ -42,7 +42,7 @@ public class Mesa {
             notifyAll(); // Despierta al chef
             return true;
         }
-        return false; // Ingredientes no son compatibles con el ayudante
+        return false;
     }
 }
 

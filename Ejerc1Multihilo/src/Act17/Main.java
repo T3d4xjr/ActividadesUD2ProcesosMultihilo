@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Ejerc15;
+package Act17;
 
+/**
+ *
+ * @author DAM1
+ */
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -34,6 +38,6 @@ public class Main {
 
         
 
-        System.out.println("Todos los ratones han terminado de comer.");
+        
     }
 }

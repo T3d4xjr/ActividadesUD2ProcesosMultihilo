@@ -8,14 +8,14 @@ public class Comedero {
     private int comidaActual;
 
     public Comedero() {
-        this.comidaActual = 0; // Inicialmente sin comida
+        this.comidaActual = 0; 
     }
 
     public synchronized boolean consumirComida(String nombreRaton, int cantidad) {
         while (comidaActual < cantidad) {
             System.out.println(nombreRaton + " está esperando comida suficiente.");
             try {
-                wait(); // Espera a que haya suficiente comida
+                wait();
             } catch (InterruptedException e) {
                 System.out.println(nombreRaton + " fue interrumpido.");
                 return false;
@@ -29,7 +29,7 @@ public class Comedero {
     public synchronized void recargarComida(int cantidad) {
         comidaActual += cantidad;
         System.out.println("Cuidador recargó " + cantidad + " unidades de comida. Comida actual: " + comidaActual);
-        notifyAll(); // Notifica a todos los ratones que pueden continuar
+        notifyAll();
     }
 
     public synchronized int getComidaActual() {

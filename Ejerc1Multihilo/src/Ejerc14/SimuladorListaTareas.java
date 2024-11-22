@@ -26,5 +26,6 @@ public class SimuladorListaTareas {
         } catch (InterruptedException e) {
             System.out.println("El hilo principal fue interrumpido.");
         }
+        System.out.println("Ya no quedan tareas por leer.");
     }
 }

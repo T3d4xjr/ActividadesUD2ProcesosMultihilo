@@ -18,11 +18,6 @@ public class Planificador extends Thread {
         for (int i = 0; i < numTareas; i++) {
             String tarea = "Tarea " + i;
             listaTareas.añadirTarea(tarea);
-            try {
-                Thread.sleep(500); // Simula un retraso al añadir la tarea
-            } catch (InterruptedException e) {
-                System.out.println("El planificador fue interrumpido.");
-            }
         }
     }
 }
