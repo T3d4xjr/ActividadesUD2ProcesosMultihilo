@@ -14,6 +14,8 @@ public class Impresora {
     private boolean ocupada = false;
 
     public void imprimir(int idOrdenador, int tiempoImpresion) {
+        
+        /**
         lock.lock();
         try {
             // Espera si la impresora está ocupada
@@ -39,6 +41,19 @@ public class Impresora {
             System.out.println("El ordenador " + idOrdenador + " fue interrumpido.");
         } finally {
             lock.unlock();
+        }
+        * */
+        
+        System.out.println("El ordenador "+idOrdenador+" listo para imprimir");
+        lock.lock();
+        try {
+            System.out.println("El ordenador " +idOrdenador+" ha comenzado a imprimir ");
+            Thread.sleep(tiempoImpresion);
+            System.out.println("El ordenador " +idOrdenador+" ha terminado a imprimir ");
+        } catch (InterruptedException e) {
+            System.out.println("El ordenador " + idOrdenador + " fue interrumpido.");
+        }finally{
+        lock.unlock();
         }
     }
 }

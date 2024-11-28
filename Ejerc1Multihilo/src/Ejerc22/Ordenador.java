@@ -29,6 +29,5 @@ public class Ordenador extends Thread {
         // Intentar imprimir
         impresora.imprimir(id, tiempoImpresion);
 
-        System.out.println("El ordenador " + id + " ha terminado de imprimir.");
     }
 }
