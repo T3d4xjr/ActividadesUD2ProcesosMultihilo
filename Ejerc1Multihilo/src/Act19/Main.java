@@ -14,6 +14,8 @@ public class Main {
         Proveedor proveedorHarina = new Proveedor(mesa, "harina");
         Proveedor proveedorAzucar = new Proveedor(mesa, "azúcar");
         Proveedor proveedorHuevos = new Proveedor(mesa, "huevos");
+        
+        
 
         proveedorHarina.start();
         proveedorAzucar.start();

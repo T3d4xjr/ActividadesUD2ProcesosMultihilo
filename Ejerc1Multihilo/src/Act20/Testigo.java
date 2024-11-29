@@ -21,9 +21,7 @@ public class Testigo {
                 testigoDisponible.await();
             }
             disponible = false; // Testigo en uso
-            System.out.println(nombreAtleta + " tomó el testigo.");
         } catch (InterruptedException e) {
-            System.out.println(nombreAtleta + " fue interrumpido mientras esperaba el testigo.");
         } finally {
             lock.unlock();
         }
@@ -34,7 +32,6 @@ public class Testigo {
         lock.lock();
         try {
             disponible = true; // Testigo disponible
-            System.out.println(nombreAtleta + " soltó el testigo.");
             testigoDisponible.signal(); // Notificar que el testigo está disponible
         } finally {
             lock.unlock();

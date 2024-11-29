@@ -28,6 +28,11 @@ public class CarreraRelevo {
         for (int i = 0; i < atletas.length; i++) {
             atletas[i].start(); // Iniciar el hilo
 
+            
+        }
+        // Crear y ejecutar los hilos de forma secuencial
+        for (int i = 0; i < atletas.length; i++) {
+
             // Asegurar que un atleta no comience hasta que el anterior termine
             try {
                 atletas[i].join();

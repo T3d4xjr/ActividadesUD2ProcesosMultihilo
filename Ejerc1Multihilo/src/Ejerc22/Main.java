@@ -15,7 +15,9 @@ public class Main {
         // Crear e iniciar 10 hilos (ordenadores)
         for (int i = 1; i <= 10; i++) {
             new Ordenador(i, impresora).start();
+            
         }
+        
     }
 }
 
