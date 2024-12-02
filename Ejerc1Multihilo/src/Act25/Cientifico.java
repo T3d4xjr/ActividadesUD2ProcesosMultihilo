@@ -4,6 +4,8 @@
  */
 package Act25;
 
+import java.util.Random;
+
 
 public class Cientifico extends Thread {
     private final int cientificoId;
@@ -14,16 +16,38 @@ public class Cientifico extends Thread {
         this.cientificoId = cientificoId;
         this.laboratorio = laboratorio;
     }
+    public void seleccionarMuestra(int cientificoId) {
+        try {
+          
+            Random random = new Random();
+            int tiempoPreparacion = random.nextInt(4) + 3; // Aleatorio entre 3 y 6 segundos
+            Thread.sleep(tiempoPreparacion * 1000); // Convertir a milisegundos
+            System.out.println("El científico " + cientificoId + " ha seleccionado la muestra en " + tiempoPreparacion + " segundos.");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public void analizarMuestra(int cientificoId) {
+        try {
+            
+            Random random = new Random();
+            int tiempoAnalisis = random.nextInt(3) + 2; // Aleatorio entre 2 y 4 segundos
+            Thread.sleep(tiempoAnalisis * 1000); // Convertir a milisegundos
+            System.out.println("El científico " + cientificoId + " ha analizado la muestra en " + tiempoAnalisis + " segundos.");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public void run() {
         // El ciclo de trabajo de cada científico
         laboratorio.entrarSalaA(cientificoId);  // Intentar entrar en la sala A
-        laboratorio.seleccionarMuestra(cientificoId); // Preparar la muestra
-        laboratorio.salirSalaA(cientificoId);    // Salir de la sala A
+        seleccionarMuestra(cientificoId);
+      
+        laboratorio.cambiarSala(cientificoId);
         
-        laboratorio.entrarSalaB(cientificoId);  // Intentar entrar en la sala B
-        laboratorio.analizarMuestra(cientificoId); // Analizar la muestra
+        analizarMuestra(cientificoId);
         laboratorio.salirSalaB(cientificoId);    // Salir de la sala B
     }
 }

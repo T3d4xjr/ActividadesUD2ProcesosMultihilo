@@ -4,6 +4,7 @@
  */
 package Act23;
 
+import java.util.Random;
 import java.util.concurrent.Semaphore;
 
 public class Impresora {
@@ -24,7 +25,9 @@ public class Impresora {
             System.out.println("El ordenador " + ordenadorNumero + " ha comenzado a imprimir.");
 
             // Simular el tiempo de impresión entre 3 y 6 segundos
-            Thread.sleep((int) (Math.random() * (6000 - 3000) + 3000));
+            Random rd =new Random();
+            int tiempoImpreion=rd.nextInt(3000,6000);
+            Thread.sleep(tiempoImpreion);
 
             // El ordenador ha terminado de imprimir
             System.out.println("El ordenador " + ordenadorNumero + " ha terminado de imprimir.");

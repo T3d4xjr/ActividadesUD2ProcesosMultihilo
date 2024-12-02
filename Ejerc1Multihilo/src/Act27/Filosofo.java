@@ -6,7 +6,6 @@ package Act27;
 
 import java.util.Random;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Filosofo extends Thread {
     private final int id;
